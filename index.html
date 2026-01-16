@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOPSIS Web Service</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: #ffffff;
+            border-radius: 0;
+            box-shadow: 0 0 0 3px #000000, 0 0 0 6px #ffffff, 0 20px 60px rgba(0, 0, 0, 0.5);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+            border: 3px solid #000000;
+        }
+
+        h1 {
+            color: #000000;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.8em;
+            font-weight: 900;
+            letter-spacing: -1px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #000000;
+            margin-bottom: 30px;
+            font-size: 0.95em;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000000;
+            font-weight: 800;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="file"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 3px solid #000000;
+            border-radius: 0;
+            font-size: 1em;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            background: #000000;
+            color: #ffffff;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .info-text {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #000000;
+            color: #ffffff;
+            border: 3px solid #000000;
+            border-radius: 0;
+            font-size: 1.1em;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .submit-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 5px 5px 0 #000000;
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+            box-shadow: 2px 2px 0 #000000;
+        }
+
+        .submit-btn:disabled {
+            background: #666;
+            border-color: #666;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .error {
+            color: #000000;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+            font-weight: 700;
+            background: #ffdddd;
+            padding: 8px;
+            border: 2px solid #000000;
+        }
+
+        .success {
+            background: #000000;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 0;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            font-weight: 700;
+            border: 3px solid #000000;
+        }
+
+        .loading {
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .spinner {
+            border: 4px solid #ffffff;
+            border-top: 4px solid #000000;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .example {
+            background: #000000;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 0;
+            margin-top: 30px;
+            font-size: 0.9em;
+            border: 3px solid #000000;
+        }
+
+        .example-title {
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .example-content {
+            font-family: 'Courier New', monospace;
+            color: #ffffff;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>TOPSIS Web Service</h1>
+        <p class="subtitle">Multi-Criteria Decision Analysis Tool</p>
+
+        <form id="topsisForm">
+            <div class="form-group">
+                <label for="csvFile">Upload CSV File *</label>
+                <input type="file" id="csvFile" accept=".csv" required>
+                <p class="info-text">First column: option names, remaining columns: numeric criteria values</p>
+                <div class="error" id="fileError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="weights">Weights *</label>
+                <input type="text" id="weights" placeholder="e.g., 1,1,1,2" required>
+                <p class="info-text">Comma-separated numeric values (importance of each criterion)</p>
+                <div class="error" id="weightsError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="impacts">Impacts *</label>
+                <input type="text" id="impacts" placeholder="e.g., +,+,-,+" required>
+                <p class="info-text">Comma-separated + or - (+ for maximize, - for minimize)</p>
+                <div class="error" id="impactsError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" placeholder="your.email@example.com" required>
+                <p class="info-text">Results will be sent to this email address</p>
+                <div class="error" id="emailError"></div>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Calculate TOPSIS & Send Results</button>
+        </form>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p style="margin-top: 10px; color: #ffffff; font-weight: 700;">Processing your request...</p>
+        </div>
+
+        <div class="success" id="success">
+            ✓ RESULTS SUCCESSFULLY SENT TO YOUR EMAIL!
+        </div>
+
+        <div class="example">
+            <div class="example-title">Example CSV Format:</div>
+            <div class="example-content">
+                Model,Price,Storage,Camera,Battery<br>
+                P1,250,64,12,4000<br>
+                P2,200,32,8,3500<br>
+                P3,300,128,16,4500
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="website/topsis.js"></script>
+    <script src="website/main.js"></script>
+</body>
+</html>
