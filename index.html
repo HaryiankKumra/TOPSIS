@@ -25,10 +25,11 @@
             background: #ffffff;
             border-radius: 0;
             box-shadow: 0 0 0 3px #000000, 0 0 0 6px #ffffff, 0 20px 60px rgba(0, 0, 0, 0.5);
-            max-width: 600px;
-            width: 100%;
+            max-width: 700px;
+            width: 95%;
             padding: 40px;
             border: 3px solid #000000;
+            margin: 20px auto;
         }
 
         h1 {
@@ -200,6 +201,368 @@
             font-weight: 600;
             line-height: 1.6;
         }
+
+        .sample-download {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: #ffffff;
+            color: #000000;
+            border: 3px solid #ffffff;
+            text-decoration: none;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            font-size: 0.85em;
+        }
+
+        .sample-download:hover {
+            background: #000000;
+            color: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .results-section {
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results-title {
+            background: #000000;
+            color: #ffffff;
+            padding: 15px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 1.2em;
+            border: 3px solid #000000;
+        }
+
+        .results-table {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+            border: 3px solid #000000;
+        }
+
+        .results-table th {
+            background: #000000;
+            color: #ffffff;
+            padding: 12px;
+            border: 2px solid #000000;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+        }
+
+        .results-table td {
+            padding: 10px;
+            border: 2px solid #000000;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .results-table tr:nth-child(even) {
+            background: #f0f0f0;
+        }
+
+        .results-table tr:hover {
+            background: #e0e0e0;
+        }
+
+        .rank-1 {
+            background: #FFD700 !important;
+            font-weight: 900 !important;
+        }
+
+        .rank-2 {
+            background: #C0C0C0 !important;
+            font-weight: 900 !important;
+        }
+
+        .rank-3 {
+            background: #CD7F32 !important;
+            font-weight: 900 !important;
+        }
+
+        .download-result-btn {
+            margin-top: 15px;
+            padding: 12px 25px;
+            background: #000000;
+            color: #ffffff;
+            border: 3px solid #000000;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+
+        .download-result-btn:hover {
+            background: #ffffff;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 5px 5px 0 #000000;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding: 15px;
+            background: #f5f5f5;
+            border: 3px solid #000000;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+            accent-color: #000000;
+        }
+
+        .checkbox-group label {
+            margin: 0;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .email-section {
+            display: none;
+        }
+
+        .email-section.active {
+            display: block;
+        }
+
+        /* Responsive Media Queries */
+        @media screen and (max-width: 1366px) {
+            .container {
+                max-width: 650px;
+                width: 90%;
+                padding: 35px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            .container {
+                max-width: 600px;
+                width: 90%;
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 2.3em;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 25px;
+                max-width: 100%;
+            }
+
+            h1 {
+                font-size: 2em;
+                margin-bottom: 8px;
+            }
+
+            .subtitle {
+                font-size: 0.8em;
+                margin-bottom: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            label {
+                font-size: 0.85em;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="file"] {
+                padding: 10px 12px;
+                font-size: 0.95em;
+            }
+
+            .submit-btn {
+                padding: 12px;
+                font-size: 1em;
+            }
+
+            .example {
+                padding: 12px;
+                font-size: 0.85em;
+            }
+
+            .results-table {
+                font-size: 0.85em;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .results-table th,
+            .results-table td {
+                padding: 8px;
+                font-size: 0.8em;
+            }
+
+            .results-title {
+                font-size: 1em;
+                padding: 12px;
+            }
+
+            .download-result-btn {
+                width: 100%;
+                padding: 10px 20px;
+                font-size: 0.85em;
+            }
+
+            .checkbox-group {
+                padding: 12px;
+                border: 2px solid #000000;
+            }
+
+            .checkbox-group label {
+                font-size: 0.85em;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 20px;
+                box-shadow: 0 0 0 2px #000000, 0 0 0 4px #ffffff, 0 10px 30px rgba(0, 0, 0, 0.5);
+                border: 2px solid #000000;
+            }
+
+            h1 {
+                font-size: 1.6em;
+                letter-spacing: 0;
+            }
+
+            .subtitle {
+                font-size: 0.7em;
+                letter-spacing: 1px;
+            }
+
+            label {
+                font-size: 0.8em;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="file"] {
+                padding: 8px 10px;
+                font-size: 0.9em;
+                border: 2px solid #000000;
+            }
+
+            .info-text {
+                font-size: 0.75em;
+            }
+
+            .submit-btn {
+                padding: 10px;
+                font-size: 0.9em;
+                letter-spacing: 1px;
+                border: 2px solid #000000;
+            }
+
+            .submit-btn:hover {
+                box-shadow: 3px 3px 0 #000000;
+            }
+
+            .example {
+                padding: 10px;
+                font-size: 0.8em;
+                border: 2px solid #000000;
+            }
+
+            .example-title {
+                font-size: 0.9em;
+            }
+
+            .example-content {
+                font-size: 0.85em;
+                line-height: 1.4;
+            }
+
+            .sample-download {
+                padding: 8px 15px;
+                font-size: 0.75em;
+                border: 2px solid #ffffff;
+            }
+
+            .results-table {
+                font-size: 0.75em;
+                border: 2px solid #000000;
+            }
+
+            .results-table th,
+            .results-table td {
+                padding: 6px 4px;
+                font-size: 0.75em;
+                border: 1px solid #000000;
+            }
+
+            .results-title {
+                font-size: 0.9em;
+                padding: 10px;
+                letter-spacing: 1px;
+                border: 2px solid #000000;
+            }
+
+            .download-result-btn {
+                width: 100%;
+                padding: 8px 15px;
+                font-size: 0.8em;
+                border: 2px solid #000000;
+            }
+
+            .download-result-btn:hover {
+                box-shadow: 3px 3px 0 #000000;
+            }
+
+            .error {
+                font-size: 0.8em;
+                padding: 6px;
+                border: 1px solid #000000;
+            }
+
+            .success {
+                padding: 12px;
+                font-size: 0.85em;
+                border: 2px solid #000000;
+            }
+
+            .checkbox-group {
+                padding: 10px;
+                border: 2px solid #000000;
+            }
+
+            .checkbox-group input[type="checkbox"] {
+                width: 18px;
+                height: 18px;
+            }
+
+            .checkbox-group label {
+                font-size: 0.75em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -229,14 +592,19 @@
                 <div class="error" id="impactsError"></div>
             </div>
 
-            <div class="form-group">
-                <label for="email">Email Address *</label>
-                <input type="email" id="email" placeholder="your.email@example.com" required>
+            <div class="checkbox-group">
+                <input type="checkbox" id="sendEmail" name="sendEmail">
+                <label for="sendEmail">Send results to email (optional)</label>
+            </div>
+
+            <div class="form-group email-section" id="emailSection">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" placeholder="your.email@example.com">
                 <p class="info-text">Results will be sent to this email address</p>
                 <div class="error" id="emailError"></div>
             </div>
 
-            <button type="submit" class="submit-btn" id="submitBtn">Calculate TOPSIS & Send Results</button>
+            <button type="submit" class="submit-btn" id="submitBtn">Calculate TOPSIS</button>
         </form>
 
         <div class="loading" id="loading">
@@ -256,6 +624,13 @@
                 P2,200,32,8,3500<br>
                 P3,300,128,16,4500
             </div>
+            <a href="website/sample_data.csv" download="sample_data.csv" class="sample-download">📥 Download Sample CSV File</a>
+        </div>
+
+        <div class="results-section" id="resultsSection">
+            <div class="results-title">✓ TOPSIS RESULTS</div>
+            <div id="resultsContainer"></div>
+            <button class="download-result-btn" id="downloadResultBtn">📥 Download Results as CSV</button>
         </div>
     </div>
 
